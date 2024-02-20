@@ -21,4 +21,12 @@ contract SendWithdrawMoney {
     function withdrawToAddress(address payable to) public {
         to.transfer(getContractBalance());
     }
+    
+    fallback() external payable {
+        deposit();
+    }
+
+    receive() external payable {
+        deposit();
+    }
 }
